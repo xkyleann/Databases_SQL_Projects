@@ -8,7 +8,7 @@
   
 ## Projects 
 - Exercise for Indexing with SQL. 
-**Task 1: Hash Based Indexes** 
+### **Task 1: Hash Based Indexes** 
 - Execute a query which displays all orders for the buk1 composition. Check the execution plan and take note of the execution times.
 - Add a hash-based index which can accelerate the aforementioned query to the orders table. Take note of the plan and execution plan.
 **Task 1: Solution** 
