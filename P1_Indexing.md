@@ -28,7 +28,7 @@ EXPLAIN ANALYZE SELECT DESCRIPTION * FROM all_orders WHERE composition_no = 'buk
 SET ENABLE_SEQSCAN TO OFF;
 ```
 - This will "encourage" PostgreSQL to use indexes – this kind of optimisation may be useful when using mass storage with short seek times, such as SSD drives. Repeat the two queries and compare their execution plans and times.
-- - **_Solution_** for **_Task 2_**, should be like this: 
+- **_Solution_** for **_Task 2_**, should be like this: 
 ```SQL
 exercise2.txt -- Delete the index created in the previous exercise and create a similar one, but using B-trees. Repeat the previous query and take a note of the results.
 CREATE INDEX compositions_in ON all_orders (compositions_no);
@@ -37,5 +37,44 @@ EXPLAIN ANALYZE SELECT * FROM WHERE compositions_no < 'c' -- Execute a query dis
 EXPLAIN ANALYZE SELECT compositions_no from all_orders where compositions_no ='c' AND paid='f';
 EXPLAIN ANALYZE SELECT * FROM all_orders WHERE compositions_no ~ '^c'; -- can be removed 
 DROP INDEX compositions_in;
+```
+##### Task 3: Indexes and pattern matching
+- Create an index for the remarks column and query the database for all orders with remarks beginning with the "do" string. Is the index in use?
+- Delete the index and create a new one, but this time explicitly set its operator class (varchar_pattern_ops):
+```SQL
+CREATE INDEX orders_remarks_idx ON orders (remarks varchar_pattern_ops);
+```
+- Repeat the exercise and compare the results.
+- **_Solution_** for **_Task 3_**, should be like this: 
+```SQL
+exercise3.txt -- Create an index for the remarks column and query the database for all orders with remarks beginning with the "do" string. Is the index in use?
+CREATE INDEX orders_remarks ON orders (remarks);
+EXPLAIN ANALYZE SElECT * FROM orders WHERE remarks LIKE 'do%';
+DROP INDEX orders_remarks;
+CREATE INDEX orders_remarks_idx ON orders (remarks varchar_pattern_ops);
+DROP INDEX orders_remarks;
+```
+##### Task 4:  Multi-column indexes
+- Create a multi-column index covering the **_client_id, recipient_id and composition_id_** columns.
+- Choose one value existing in these columns and run:
+  - a query which joins the constraints for the three columns using the           **_AND_** operator,
+  - a similar query, but using **_OR_**
+- Compare the execution plans. 
+- Now query the database for all orders of the **_buk1_** composition.
+- Remove the index and create separate indexes for each of the three columns. Re-run the previous queries and compare the results.
+- **_Solution_** for **_Task 4_**, should be like this: 
+```SQL
+exercise4.txt -- Create a multi-column index covering the client_id, recipient_id and composition_id columns.
+CREATE INDEX multi_column_index ON orders (client_id, recipient_id, composition_id);
+EXPLAIN ANALYZE SELECT * FROM orders WHERE client_id = 'msowins' AND recipient_id = 1 AND composition_id = 'buk1';
+EXPLAIN ANALYZE SELECT * FROM orders WHERE client_id = 'msowins' OR recipient_id = 1 OR composition_id = 'buk1';
+EXPLAIN ANALYZE SELECT * FROM orders WHERE composition_id = 'buk1';
+DROP INDEX multi_column_index;
+CREATE INDEX composition_index ON orders (composition_id);
+CREATE INDEX recipient_index ON orders (recipient_id);
+CREATE INDEX client_index ON orders (client_id);
+EXPLAIN ANALYZE SELECT * FROM orders WHERE client_id = 'msowins' AND recipient_id = 1 AND composition_id = 'buk1';
+EXPLAIN ANALYZE SELECT * FROM orders WHERE client_id = 'msowins' OR recipient_id = 1 OR composition_id = 'buk1';
+EXPLAIN ANALYZE SELECT * FROM orders WHERE composition_id = 'buk1';
 ```
 
