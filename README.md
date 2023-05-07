@@ -14,8 +14,8 @@
 This repo includes "Databases" laboratuar tasks which are related to **_SQL_** and **_PostgreSQL_**.
 
 ## All Files 
-- [x] L1_SQL_Language  --> [L1_SQL_Language](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
-- [ ] L1_Indexing      --> [L1_Indexing]
-- [x] P1_Indexing      --> [P1_Indexing](https://github.com/xkyleann/Databases_Projects/blob/main/P1_Indexing.md) 
-- [ ] L2_GIS           --> [L2_GIS](https://github.com/Kyleann/Operating-Systems/files/10022441/02.Basic.commands.pdf) 
-- [x] P2_GIS           --> [P2_GIS](https://github.com/xkyleann/Databases_Projects/blob/main/P2_GIS.md)
+- [x] L1_SQL_Language---> [L1_SQL_Language](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
+- [ ] L1_Indexing-------> [L1_Indexing]
+- [x] P1_Indexing-------> [P1_Indexing](https://github.com/xkyleann/Databases_Projects/blob/main/P1_Indexing.md) 
+- [ ] L2_GIS------------> [L2_GIS](https://github.com/Kyleann/Operating-Systems/files/10022441/02.Basic.commands.pdf) 
+- [x] P2_GIS------------> [P2_GIS](https://github.com/xkyleann/Databases_Projects/blob/main/P2_GIS.md)
