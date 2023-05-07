@@ -11,7 +11,7 @@
 * [P2](https://tldp.org/LDP/abs/html/index.html)
 
 ## General info
-This repo includes "Databases" laboratuar tasks which are related to **_SQL_** and **_PostgreSQL_**.
+This repo related to "Databases" laboratuar tasks which are related to **_SQL_** and **_PostgreSQL_**.
 
 ## All Files 
 - [x] L1_SQL_Language---> [L1_SQL_Language](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
