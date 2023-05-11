@@ -5,10 +5,10 @@
 
 ## Table of contents
 * [General info](#general-info)
-* [L1](#lab-works)
-* [P1](https://tldp.org/LDP/abs/html/index.html)
-* [L2](#lab-works)
-* [P2](https://tldp.org/LDP/abs/html/index.html)
+* [L1](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
+* [P1](https://github.com/xkyleann/Databases_Projects/blob/main/P1_Indexing.md)
+* [L2]
+* [P2](https://github.com/xkyleann/Databases_Projects/blob/main/P2_GIS.md)
 
 ## General info
 This repo related to "Databases" laboratuar tasks which are related to **_SQL_** and **_PostgreSQL_**.
