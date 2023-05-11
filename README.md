@@ -7,7 +7,7 @@
 * [General info](#general-info)
 * [L1](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
 * [P1](https://github.com/xkyleann/Databases_Projects/blob/main/P1_Indexing.md)
-* [L2]
+* [L2]()
 * [P2](https://github.com/xkyleann/Databases_Projects/blob/main/P2_GIS.md)
 
 ## General info
