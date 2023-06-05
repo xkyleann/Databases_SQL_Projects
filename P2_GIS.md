@@ -1,6 +1,6 @@
 # DATABASES P2
 - Project topic is **_GIS_** 
-- Final project documentation can be find at --> [PR 2](https://github.com/Kyleann/AGH_Databeses_2/files/11012274/01-recap-sql-postgres-latest.pdf)
+- Final project documentation can be find at --> [PR 2]
 - The goal of  is to get accustomed with spatial extensions to relational databases, using **_PostgreSQL and PostGIS_**.
 ## Introduction 
 - Use your account on the server. If PostGIS support has not been added to the database, run the command: 
