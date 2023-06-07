@@ -9,6 +9,10 @@
 * [P1](https://github.com/xkyleann/Databases_Projects/blob/main/P1_Indexing.md)
 * [L2]()
 * [P2](https://github.com/xkyleann/Databases_Projects/blob/main/P2_GIS.md)
+* [L3]()
+* [P3]()
+* [L4]()
+* [P4]()
 
 ## General info
 This repo related to "Databases" laboratuar tasks which are related to **_SQL_** and **_PostgreSQL_**.
