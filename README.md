@@ -5,14 +5,14 @@
 
 ## Table of contents
 * [General info](#general-info)
-* [L1_SQL-Language](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
-* [P1_SQL_Language](https://github.com/xkyleann/Databases_Projects/blob/main/P1_Indexing.md)
-* [L2_Indexing]()
-* [P2_Indexing](https://github.com/xkyleann/Databases_Projects/blob/main/P2_GIS.md)
-* [L3_GIS]()
-* [P3_GIS]()
-* [L4_Neo4J]()
-* [P4_Neo4J]()
+* [L1 SQL Language](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
+* [P1 SQL Language](https://github.com/xkyleann/Databases_Projects/blob/main/P1_Indexing.md)
+* [L2 Indexing]()
+* [P2 Indexing](https://github.com/xkyleann/Databases_Projects/blob/main/P2_GIS.md)
+* [L3 GIS]()
+* [P3 GIS]()
+* [L4 Neo4J]()
+* [P4 Neo4J]()
 
 ## General info
 This repo related to "Databases" laboratuar tasks which are related to **_SQL_** and **_PostgreSQL_**.
