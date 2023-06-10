@@ -1,6 +1,6 @@
--- P1_Indexing -  LAB 2 
+-- P1_Indexing 
 -- ---------------------------------------------------------------------------------------------------
--- Lab: Indexing, the goal of this lab working with advanced indeing in relational databases. 
+-- Topic: Indexing, the goal of this lab working with advanced indeing in relational databases. 
 -- In florist's shop there are two database. 1-ascii.sql and other one is 3-ascii.sql
 -- orders --> all_orders
 
