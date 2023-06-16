@@ -1,7 +1,5 @@
 # DATABASES L1 
 - Main topic is **_SQL Recap and Introduction to PostegreSQL_** 
-- Documantation can be find at --> [Lecture 1](https://github.com/Kyleann/AGH_Databeses_2/files/11012274/01-recap-sql-postgres-latest.pdf)
-
 
 ## The Relational Data Model
 - Model data as a collection of predicates over a finite sat of variables.
@@ -167,7 +165,7 @@
 	- psql [option...] [dbname [username]]
 	- Useful switches: 
 	    - **-d dbname** –> specify database name 
-	    - **-h hostname** –> specify host to connect to; if omitted, it will connect to local UNIX domain socket specified in the config 
+	    - **-h hostname** –> Specify host to connect to; if omitted, it will connect to local UNIX domain socket specified in the config 
 	    - **-U username** –> specify username 
 	    - **-l** – list databases 
 	    - **-c command** –> run specified command and exit 
@@ -181,4 +179,9 @@
 	    - **\i** –> read commands from file
 	    - **\q** –> quit 
 
+
+<details>
+<summary>Documentation</summary>
+<a href= "https://github.com/Kyleann/AGH_Databeses_2/files/11012274/01-recap-sql-postgres-latest.pdf"> Documentation 1 </a>
+</details>
 
