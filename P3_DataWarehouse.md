@@ -36,7 +36,8 @@ CREATE SCHEMA restored_schema;
 ```
 ##### **Task 2: OLAP (Online Analytical Processing) **
 - (2) Design an OLAP star model based on the given OLTP system. Create at least 3 dimensions.
-  
+
+```mermaid
     +------------+
     |   Orders   |
     +------------+
@@ -46,17 +47,18 @@ CREATE SCHEMA restored_schema;
 +-------------+    +------------+      +--------------+
 |  Customer   |    |    Product |      |      Address |
 +-------------+    +------------+      +--------------+
-- CustomerID  <------- ProductID <-----------AddressID
-- CustomerPassword     ProductName           AddressName
-- CustomerName         ProductDescription    AddressName
-- CustomerCity         ProductPrice          AddressCity   
-- CustomerZip          ProductAvailablity    AddressZip   
-- CustomerAddress                            AddressAd   
-- CustomerEmail
-- CustomerPhone
-- CustomerFax
-- CustomerNip
-- CustomerRegon
+  CustomerID  <------- ProductID <-----------AddressID
+  CustomerPassword     ProductName           AddressName
+  CustomerName         ProductDescription    AddressName
+  CustomerCity         ProductPrice          AddressCity   
+  CustomerZip          ProductAvailablity    AddressZip   
+  CustomerAddress                            AddressAd   
+  CustomerEmail
+  CustomerPhone
+  CustomerFax
+  CustomerNip
+  CustomerRegon
+```
 
 - (3) Implement OLAP as a relational database in a new schema, e.g. olap; when working with schemas, remember about setting the search_path variable, e.g.:
 
