@@ -35,9 +35,9 @@ CREATE SCHEMA restored_schema;
 \i /path/to/trans.sql
 ```
 ##### **Task 2: OLAP (Online Analytical Processing) **
-- (2) Design an OLAP star model based on the given OLTP system. Create at least 3 dimensions.
+- (2)** Design an OLAP star model based on the given OLTP system. Create at least 3 dimensions.
 
-```mermaid
+```
     +------------+
     |   Orders   |
     +------------+
@@ -60,7 +60,7 @@ CREATE SCHEMA restored_schema;
   CustomerRegon
 ```
 
-- (3) Implement OLAP as a relational database in a new schema, e.g. olap; when working with schemas, remember about setting the search_path variable, e.g.:
+- **(3)** Implement OLAP as a relational database in a new schema, e.g. olap; when working with schemas, remember about setting the search_path variable, e.g.:
 
 ```SQL
 CREATE SCHEMA olap;
@@ -111,7 +111,7 @@ CREATE TABLE olap.orders (
 );
 ```
 
-- (4) Implement ETL with SQL loading your OLAP model with data from the OLTP tables. Use INSERT INTO ... SELECT.
+- **(4)** Implement ETL with SQL loading your OLAP model with data from the OLTP tables. Use INSERT INTO ... SELECT.
 ```SQL
 INSERT INTO olap.customer (customer_id,  customer_password, customer_name, customer_city, customer_zip,customer_address, customer_email, customer_phone,customer_fax, customer_nip, customer_regon)
 SELECT customer_id,  customer_password, customer_name, customer_city, customer_zip,customer_address, customer_email, customer_phone,customer_fax, customer_nip, customer_regon
@@ -131,7 +131,7 @@ INSERT INTO olap.orders (idorder, idcustomer, idaddressee, idproduct, orders_dat
 SELECT idorder, idcustomer, idaddressee, idproduct, orders_date, price, paid, comments
 FROM oltp.orders;
 ```
-- (5) Write an SQL query on the OLAP model which provides aggregated values for each month for a selected year. Pick the value depending on what your fact table looks like.
+- **(5)** Write an SQL query on the OLAP model which provides aggregated values for each month for a selected year. Pick the value depending on what your fact table looks like.
 ```SQL
 SELECT
     EXTRACT(MONTH FROM o.order_date) AS month,
