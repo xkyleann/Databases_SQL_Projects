@@ -14,9 +14,6 @@
 * [L4 Neo4J]()
 * [P4 Neo4J]()
 
-## General info
-This repo related to "Databases" laboratuar tasks which are related to **_SQL_** and **_PostgreSQL_**.
-**Technical Stacks** --> Indexing, PostgreGIS, OLTP, OLAP, Neo4J, Java
 
 ## All Files 
 - [x] L1_SQL_Language-----> [L1_SQL_Language](https://github.com/xkyleann/Databases_Projects/blob/main/L1_SQL_Language.md)
@@ -28,3 +25,28 @@ This repo related to "Databases" laboratuar tasks which are related to **_SQL_**
 - [ ] P3_GIS--------------> [P3_DataWarehouse]()
 - [ ] L4_Neo4J------------> [L4_Neo4J]() 
 - [ ] P4_Neo4J------------> [P4_Neo4J]()
+
+# Databases Portfolio
+
+This repository contains a collection of Databases projects and code samples showcasing my skills and experience in SQL-PostgreSQL development. It serves as a portfolio to demonstrate my proficiency in various aspects of Database programming. Mostly, includes tasks about **SQ**L, **PostgreSQL** and **GIS**.
+
+
+## Projects
+
+### Project 1: [Indexing]
+
+Description: The goal of this project is to get accustomed to advanced indexing in relational databases. Both the provided example datasets and the exercises use PostgreSQL 9.x or later.
+
+### Project 2: [GIS]
+
+Description: This project demonstrates to get accustomed to spatial extensions to relational databases, using PostgreSQL and PostGIS.
+
+### Project 3: [Datawarehouse]
+
+Description: PostgreSQL-based OLAP system with star model, ETL, and SQL query for analysis and reporting.
+
+### Project 4: [Neo4J | Graph Databases]
+
+Description: This project demonstrates graph Databases by setting up Java 11, installing and configuring Neo4J, creating a graph representing AGH Campus features, running analytics queries, using REST/API for data manipulation, and generating a Cypher dump for reporting.
+
+
