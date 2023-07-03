@@ -11,7 +11,7 @@ CREATE EXTENSION postgis;
 ## Projects 
 - Exercise for PostgreSQL and PostGIS.
 - Includes 6 exercises including answers.
-- Must used file for tasks --> 
+
 ##### **Task 1: Creating a table, measuring distances, reference systems** 
 - In this exercise, use the spherical WGS-84 reference system, SRID EPSG:4326 , used e.g. in by GPS receivers.
 - Create a table called cities, which stores the city name and the coordinates of its centre (as a GEOMETRY). Add at least two cities to the table, using data from Wikipedia – coordinates can be found under the geohack link in the top right corner (e.g. here ).
