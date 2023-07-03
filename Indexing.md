@@ -1,4 +1,4 @@
-# DATABASES P1
+# Project 1: [Indexing]
 - Project topic is **_Indexing_** 
 - Final project documentation can be find at --> [PR 1](https://github.com/Kyleann/AGH_Databeses_2/files/11012274/01-recap-sql-postgres-latest.pdf)
 
