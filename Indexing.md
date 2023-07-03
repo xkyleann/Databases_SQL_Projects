@@ -1,5 +1,6 @@
 # Project 1: [Indexing]
-- Project topic is **_Indexing_** 
+- Project topic is **_Indexing_**
+- Complete project [Indexing.sql](https://github.com/xkyleann/Databases_SQL_Portfolio/tree/main/Indexing)
 
 ## Useful SQL Commands 
   - The **ANALYZE** command collects statistics of value distribution in table columns and stores them in the pg_statistic system catalog. The planner will only be able to determine an optimal execution plan if the ANALYZE command was executed for a given table and its columns significant for the query.
