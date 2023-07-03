@@ -21,28 +21,6 @@ Description: PostgreSQL-based OLAP system with star model, ETL, and SQL query fo
 
 Description: This project demonstrates graph Databases by setting up Java 11, installing and configuring Neo4J, creating a graph representing AGH Campus features, running analytics queries, using REST/API for data manipulation, and generating a Cypher dump for reporting.
 
-## Notes
-
-### Note 0: [SQL Language]
-
-Description: Main topic is SQL Recap and Introduction to PostegreSQL.
-
-### Note 1: [Indexing]
-
-Description: The goal of this project is to get accustomed to advanced indexing in relational databases. Both the provided example datasets and the exercises use PostgreSQL 9.x or later.
-
-### Note 2: [GIS]
-
-Description: This project demonstrates to get accustomed to spatial extensions to relational databases, using PostgreSQL and PostGIS.
-
-### Note 3: [Datawarehouse]
-
-Description: PostgreSQL-based OLAP system with star model, ETL, and SQL query for analysis and reporting.
-
-### Note 4: [Neo4J | Graph Databases]
-
-Description: This project demonstrates graph Databases by setting up Java 11, installing and configuring Neo4J, creating a graph representing AGH Campus features, running analytics queries, using REST/API for data manipulation, and generating a Cypher dump for reporting.
-
 ### Notes Documentation 
 <details>
 <summary> Note 0: SQL Language </summary>
