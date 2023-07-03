@@ -44,5 +44,19 @@ Description: This project demonstrates graph Databases by setting up Java 11, in
 
 <details>
 <summary> Note 4: Neo4J | Graph Databases  </summary>
-<a href= "https://github.com/xkyleann/Java_Portfolio/files/11939623/oo7-2.pdf"> Documentation 4</a>
+<a href= "https://github.com/xkyleann/Databases_SQL_Portfolio/files/11940487/Note.4.pdf"> Documentation 4</a>
 </details>
+
+<details>
+<summary> Note 5: CouchDB </summary>
+<a href= "https://github.com/xkyleann/Databases_SQL_Portfolio/files/11940492/Note.5.pdf"> Documentation 5</a>
+</details>
+
+<details>
+<summary> Note 6: NoSQL, ACID, BASIC, CAP </summary>
+<a href= "https://github.com/xkyleann/Databases_SQL_Portfolio/files/11940497/Note.6.pdf"> Documentation 6</a>
+</details>
+
+
+
+
