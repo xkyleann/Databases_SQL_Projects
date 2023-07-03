@@ -1,6 +1,5 @@
 # Project 1: [Indexing]
 - Project topic is **_Indexing_** 
-- Final project documentation can be find at --> [PR 1](https://github.com/Kyleann/AGH_Databeses_2/files/11012274/01-recap-sql-postgres-latest.pdf)
 
 ## Useful SQL Commands 
   - The **ANALYZE** command collects statistics of value distribution in table columns and stores them in the pg_statistic system catalog. The planner will only be able to determine an optimal execution plan if the ANALYZE command was executed for a given table and its columns significant for the query.
