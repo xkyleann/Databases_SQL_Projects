@@ -1,4 +1,4 @@
-# DATABASES L1 
+# Note 0 | SQL Language
 - Main topic is **_SQL Recap and Introduction to PostegreSQL_** 
 
 ## The Relational Data Model
