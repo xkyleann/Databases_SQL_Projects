@@ -5,19 +5,19 @@ This repository contains a collection of Databases projects and code samples sho
 
 ## Projects
 
-### Project 1: [Indexing]
+### Project 1: [Indexing](https://github.com/xkyleann/Databases_SQL_Portfolio/tree/main/Indexing)
 
 Description: The goal of this project is to get accustomed to advanced indexing in relational databases. Both the provided example datasets and the exercises use PostgreSQL 9.x or later.
 
-### Project 2: [GIS]
+### Project 2: [GIS](https://github.com/xkyleann/Databases_SQL_Portfolio/tree/main/GIS)
 
 Description: This project demonstrates to get accustomed to spatial extensions to relational databases, using PostgreSQL and PostGIS.
 
-### Project 3: [Datawarehouse]
+### Project 3: [Datawarehouse](https://github.com/xkyleann/Databases_SQL_Portfolio/tree/main/Datawarehouse)
 
 Description: PostgreSQL-based OLAP system with star model, ETL, and SQL query for analysis and reporting.
 
-### Project 4: [Neo4J | Graph Databases]
+### Project 4: [Neo4J | Graph Databases](https://github.com/xkyleann/Databases_SQL_Portfolio/tree/main/Neo4J_GraphDatabases)
 
 Description: This project demonstrates graph Databases by setting up Java 11, installing and configuring Neo4J, creating a graph representing AGH Campus features, running analytics queries, using REST/API for data manipulation, and generating a Cypher dump for reporting.
 
