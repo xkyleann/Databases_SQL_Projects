@@ -21,7 +21,7 @@ Description: PostgreSQL-based OLAP system with star model, ETL, and SQL query fo
 
 Description: This project demonstrates graph Databases by setting up Java 11, installing and configuring Neo4J, creating a graph representing AGH Campus features, running analytics queries, using REST/API for data manipulation, and generating a Cypher dump for reporting.
 
-### Uni Notes Documentation 
+### AGH Notes Documentation 
 <details>
 <summary> Note 0: SQL Language </summary>
 <a href= "https://github.com/xkyleann/Databases_SQL_Portfolio/files/11940280/Note.0.pdf"> Documentation 0</a>
