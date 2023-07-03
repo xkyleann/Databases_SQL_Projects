@@ -1,0 +1,6 @@
+Why do we need different reference systems? Why can't we use 4326 all the time?
+
+In GIS (Geographic Information Systems) different references systems are using for represent and analyze the spatial data. EPSG:4326 is not designed for map calculations and disortions in term of area and when distances are really large so that is why we cannot use EPSG:4326 all the time. Such as to measure on map we should use "projected" reference systems. For global extand EPSG:3857 would be better choice rather than EPSG:4326. 
+
+In another words, WGS84 is associated with several common projections, but it may not be the most appropriate choice for all scenarios. Utilizing other reference systems allows for the selection of projections that minimize distortions and preserve accuracy within specific regions.
+
