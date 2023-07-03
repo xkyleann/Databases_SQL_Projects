@@ -180,8 +180,5 @@
 	    - **\q** –> quit 
 
 
-<details>
-<summary>Documentation</summary>
-<a href= "https://github.com/Kyleann/AGH_Databeses_2/files/11012274/01-recap-sql-postgres-latest.pdf"> Documentation 1 </a>
-</details>
+
 
