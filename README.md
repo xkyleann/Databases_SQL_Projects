@@ -24,17 +24,17 @@ Description: This project demonstrates graph Databases by setting up Java 11, in
 ### Notes Documentation 
 <details>
 <summary> Note 0: SQL Language </summary>
-<a href= "https://github.com/Kyleann/AGH_Databeses_2/files/11012274/01-recap-sql-postgres-latest.pdf"> Documentation 0</a>
+<a href= "https://github.com/xkyleann/Databases_SQL_Portfolio/files/11940280/Note.0.pdf"> Documentation 0</a>
 </details>
-  
+
 <details>
 <summary> Note 1: Indexing  </summary>
-<a href= "https://github.com/xkyleann/Java_Portfolio/files/11770796/Lab3.pdf"> Documentation 1</a>
+<a href= "https://github.com/xkyleann/Databases_SQL_Portfolio/files/11940283/Note.1.pdf"> Documentation 1</a>
 </details>
 
 <details>
 <summary> Note 2: GIS  </summary>
-<a href= "https://github.com/xkyleann/Java_Portfolio/files/11938750/OOP_LAB4.pdf"> Documentation 2</a>
+<a href= "https://github.com/xkyleann/Databases_SQL_Portfolio/files/11940287/Note.2.pdf"> Documentation 2</a>
 </details>
 
 <details>
