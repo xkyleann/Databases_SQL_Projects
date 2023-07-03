@@ -1,6 +1,5 @@
-# DATABASES P2
+# Project 2: GIS
 - Project topic is **_GIS_** 
-- Final project documentation can be find at --> [PR 2]
 - The goal of  is to get accustomed with spatial extensions to relational databases, using **_PostgreSQL and PostGIS_**.
 ## Introduction 
 - Use your account on the server. If PostGIS support has not been added to the database, run the command: 
@@ -63,4 +62,3 @@ FROM
 WHERE 
     city_name = 'Krakow'; 
 ```
-##### **Task 3: Data import** 
