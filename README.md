@@ -1,6 +1,6 @@
 # Databases Portfolio
 
-This repository contains a collection of Databases projects and code samples showcasing my skills and experience in SQL-PostgreSQL development. It serves as a portfolio to demonstrate my proficiency in various aspects of Database programming. Mostly, includes tasks about **SQL**, **PostgreSQL** and **GIS**.
+Repository contains a collection of Databases projects and code samples showcasing my skills and experience in SQL-PostgreSQL development. It serves as a portfolio to demonstrate my proficiency in various aspects of Database programming. Mostly, includes tasks about **SQL**, **PostgreSQL** and **GIS**.
 
 
 ## Projects
