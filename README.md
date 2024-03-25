@@ -11,7 +11,7 @@ Description: The goal of this project is to get accustomed to advanced indexing 
 
 ### Project 2: [GIS](https://github.com/xkyleann/Databases_SQL_Portfolio/tree/main/GIS)
 
-Description: This project demonstrates to get accustomed to spatial extensions to relational databases, using PostgreSQL and PostGIS.
+Description: To get accustomed to spatial extensions to relational databases, using PostgreSQL and PostGIS.
 
 ### Project 3: [Datawarehouse](https://github.com/xkyleann/Databases_SQL_Portfolio/tree/main/Datawarehouse)
 
