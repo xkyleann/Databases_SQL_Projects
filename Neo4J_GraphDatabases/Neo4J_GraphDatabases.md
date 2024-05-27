@@ -108,10 +108,11 @@ SET b:TEACHING
 ```
 Added 4 labels, completed after 100 ms.
 
-**Task 1.3:** Create buildings' adjacency: e.g. C-3 is adjacent to C-2 and there is a foot path connecting them on each floor; mind that not all floors are connected e.g.  C-1 and A-1 is connected via 1st floor only, if you are not sure which buildings are connected at which floors make it up :); use and edge with property "floor" (value of 0 represents a ground floor)
+**Task 1.3:** Create buildings' **adjacency**: e.g. C-3 is adjacent to C-2 and there is a foot path connecting them on each floor; mind that not all floors are connected e.g.  C-1 and A-1 is connected via 1st floor only, if you are not sure which buildings are connected at which floors make it up :); use and edge with property "floor" (value of 0 represents a ground floor)
 
 ```Cypher
 // Creating adjacency relationships between buildings
+// Adjacent will specify the floor on which connection exists.
 CREATE (c3)-[:ADJACENT {floor: 0}]->(c2)
 CREATE (c3)-[:ADJACENT {floor: 1}]->(c2)
 CREATE (c1)-[:ADJACENT {floor: 1}]->(a1)
@@ -132,7 +133,7 @@ CREATE (e3)-[:CONNECTED_TO]->(e4)
 ```
 Set 1 property, created 1 relationship, completed after 46 ms.
 
-**Task 1.4:** Create faculty head quarter locations (labeled with numbers on the map); each faculty headquarter should be represented as a node with "HQ" label,
+**Task 1.4:** Create faculty **head quarter** locations (labeled with numbers on the map); each faculty headquarter should be represented as a node with "HQ" label,
 ```Cypher
 CREATE (:HQ {name: 'HQ-1'})
 CREATE (:HQ {name: 'HQ-2'})
@@ -191,9 +192,9 @@ Created 756 relationships, completed after 60 ms.
 **Task 2.1:** Are there any buildings that are **not connected** directly (not through an entrance) to other buildings?
 
 ```Cypher
-MATCH (b:Building)
-WHERE NOT (b)-[:ADJACENT]->()
-RETURN b.name
+MATCH (b:Building) // find all nodes labeled "Building"
+WHERE NOT (b)-[:ADJACENT]->() // to filter buildings that do not have any relationship
+RETURN b.name // retutn name of building (as output)
 ```
 Output --> S-1"
 "S-2"
@@ -207,8 +208,8 @@ Output --> S-1"
 
 **Task 2.2:** How many service facilities there are?
 ```Cypher
-MATCH (b:Building)-[:HAS_FUNCTION]->(f:Function {type: 'SERVICE'})
-RETURN count(b) AS service_facilities_count
+MATCH (b:Building)-[:HAS_FUNCTION]->(f:Function {type: 'SERVICE'}) // finds Service type in Buildings 
+RETURN count(b) AS service_facilities_count // output for 
 ```
 Started streaming 1 records after 8 ms and completed after 9 ms.
 Output --> 4
@@ -216,29 +217,37 @@ Output --> 4
 **Task 2.3:** What buildings A-1 is connected with?
 ```Cypher
 MATCH (a1:Building {name: 'A-1'})-[:ADJACENT]-(adj:Building)
-RETURN adj.name, collect(properties(a1)-[:ADJACENT]->(adj)) AS floors_connected
+RETURN adj.name, collect(properties(a1)-[:ADJACENT]->(adj)) AS floors_connected //names of these adjacent buildings and collects the properties of the ADJACENT relationships,
 ```
 Output --> Data Model
+
 **Task 2.4:** What buildings A-1 is connected with and at which floors?
 - Connected changed to ADJACENT_TO
 ```Cypher
-MATCH (start:Building {name: 'C-1'}), (end:Building {name: 'D-1'})
-CALL apoc.algo.allSimplePaths(start, end, 'ADJACENT', 100) YIELD path
-WITH path WHERE NONE(rel IN relationships(path) WHERE type(rel) = 'CONNECTED_TO')
-RETURN path
+MATCH (a1:Building {name: 'A-1'})-[:ADJACENT_TO]-(connectedBuilding)
+RETURN connectedBuilding.name AS connectedBuilding, connectedBuilding.floor AS floor
 ```
 
 **Task 2.5:** How to get from the Candidates Application Centre to the Faculty of Mechanical Engineering and Robotics without leaving the buildings (not going through an entrance)?
 ```Cypher
-MATCH (start:Building {name: 'C-3'}), (end:Entrance {name: 'Entrance1'})
-CALL apoc.algo.dijkstra(start, end, 'ADJACENT|CONNECTED_TO', 'floor', 1) YIELD path, weight
-RETURN path, weight
-
+MATCH path = (c:CLASSROOM {number: 'C1'})-[:LOCATED_IN|ADJACENT_TO*]-(f:TEACHING {name: 'Faculty of Mechanical Engineering and Robotics'})
+WHERE ALL(node IN nodes(path)[1..-1] WHERE node:TEACHING OR node:RESEARCH OR node:SERVICE)  // filter ensures that all nodes in the path, except the starting and ending nodes, are labeled as TEACHING, RESEARCH, or SERVICE, thus preventing the path from including any entrances.
+RETURN path
 ```
+
 **Task 2.6:** What is a shortest path (minimal number of buildings to go through) from the C-3 ground floor to the A-0 entrance?
 ```Cypher
-MATCH (b1:Building)-[:ADJACENT*1..2]-(b2:Building)
-WITH b1, count(DISTINCT b2) AS connected_buildings
-WHERE connected_buildings >= 3
+MATCH (b1:Building)-[:ADJACENT*1..2]-(b2:Building)  // This query matches buildings connected within 1 to 2 hops through the ADJACENT relationship.
+WITH b1, count(DISTINCT b2) AS connected_buildings // aggregates the number of distinct buildings each b1 building is connected to within the specified hop range.
+WHERE connected_buildings >= 3   // at least three other buildings.
 RETURN b1.name
 ```
+
+```Cypher
+// Solution with Dijkstra
+MATCH (start:Building {name: 'C-3'}), (end:Entrance {name: 'A-0'})
+CALL apoc.algo.dijkstra(start, end, 'ADJACENT|CONNECTED_TO', 'weight') YIELD path, weight
+RETURN path, weight
+```
+
+//This specifies a **variable-length pattern** that **matches** paths with a **minimum of 1 and a maximum of 2** relationships. This can be used to find nodes that are within 1 or 2 hops from a given node.
