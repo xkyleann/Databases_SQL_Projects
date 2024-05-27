@@ -30,7 +30,64 @@ CREATE (:Building {name: 'B-4'})
 CREATE (:Building {name: 'H-B3B4'})
 CREATE (:Building {name: 'H-B1B2'})
 ```
+
+**Building and their Functions**
+
+```Cypher
+CREATE (s1:Building {name: 'S-1'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+CREATE (s2:Building {name: 'S-2'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+CREATE (d1:Building {name: 'D-1'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (u2:Building {name: 'U-2'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (a4:Building {name: 'A-4'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (a3:Building {name: 'A-3'})-[:HAS_FUNCTION]->(:Function {type: 'TEACHING'})
+CREATE (c4:Building {name: 'C-4'})-[:HAS_FUNCTION]->(:Function {type: 'TEACHING'})
+CREATE (c3:Building {name: 'C-3'})-[:HAS_FUNCTION]->(:Function {type: 'TEACHING'})
+CREATE (c2:Building {name: 'C-2'})-[:HAS_FUNCTION]->(:Function {type: 'TEACHING'})
+CREATE (u1:Building {name: 'U-1'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (ha2:Building {name: 'H-A2'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+CREATE (ha1:Building {name: 'H-A1'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+CREATE (a2:Building {name: 'A-2'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (a1:Building {name: 'A-1'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (c1:Building {name: 'C-1'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (a0:Building {name: 'A-0'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+CREATE (b1:Building {name: 'B-1'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+CREATE (b2:Building {name: 'B-2'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (b3:Building {name: 'B-3'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (b4:Building {name: 'B-4'})-[:HAS_FUNCTION]->(:Function {type: 'RESEARCH'})
+CREATE (hb3b4:Building {name: 'H-B3B4'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+CREATE (hb1b2:Building {name: 'H-B1B2'})-[:HAS_FUNCTION]->(:Function {type: 'SERVICE'})
+```
+
+**Faculty Headquarters**
+
+```Cypher
+CREATE (hq1:HQ {name: 'Faculty of Mining'})-[:LOCATED_IN]->(s1)
+CREATE (hq2:HQ {name: 'Faculty of Electrical Engineering'})-[:LOCATED_IN]->(s2)
+CREATE (hq3:HQ {name: 'Faculty of Mechanical Engineering'})-[:LOCATED_IN]->(d1)
+```
+
+**Classrooms**
+
+```Cypher
+CREATE (class1:Classroom {name: '101'})-[:LOCATED_IN]->(a1)
+CREATE (class2:Classroom {name: '102'})-[:LOCATED_IN]->(a1)
+CREATE (class3:Classroom {name: '201'})-[:LOCATED_IN]->(c3)
+CREATE (class4:Classroom {name: '202'})-[:LOCATED_IN]->(c4)
+```
+
+
+**Entrances**
+
+```Cypher
+CREATE (e1:Entrance {name: 'Entrance1'})-[:LOCATED_IN]->(a0)
+CREATE (e2:Entrance {name: 'Entrance2'})-[:LOCATED_IN]->(a1)
+CREATE (e3:Entrance {name: 'Entrance3'})-[:LOCATED_IN]->(c1)
+CREATE (e4:Entrance {name: 'Entrance4'})-[:LOCATED_IN]->(c2)
+```
+
 Added 22 labels, created 22 nodes, set 22 properties, completed after 35 ms.
+
+---
 
 **Task 1.2:** Create building functions: service facilities, research and teaching facilities; use labels: "SERVICE", "RESEARCH", "TEACHING",
 
@@ -55,25 +112,23 @@ Added 4 labels, completed after 100 ms.
 
 ```Cypher
 // Creating adjacency relationships between buildings
-MATCH (b1:BUILDING {name: 'C-3'}), (b2:BUILDING {name: 'C-2'})
-CREATE (b1)-[:ADJACENT_TO {floor: 0}]->(b2)
-WITH b2
+CREATE (c3)-[:ADJACENT {floor: 0}]->(c2)
+CREATE (c3)-[:ADJACENT {floor: 1}]->(c2)
+CREATE (c1)-[:ADJACENT {floor: 1}]->(a1)
+CREATE (a1)-[:ADJACENT {floor: 0}]->(a2)
+CREATE (a2)-[:ADJACENT {floor: 1}]->(a3)
+CREATE (a3)-[:ADJACENT {floor: 0}]->(a4)
+CREATE (b1)-[:ADJACENT {floor: 0}]->(b2)
+CREATE (b2)-[:ADJACENT {floor: 1}]->(b3)
+CREATE (b3)-[:ADJACENT {floor: 0}]->(b4)
+CREATE (u1)-[:ADJACENT {floor: 0}]->(u2)
+CREATE (ha1)-[:ADJACENT {floor: 0}]->(ha2)
+CREATE (hb1b2)-[:ADJACENT {floor: 0}]->(hb3b4)
 
-MATCH (b1:BUILDING {name: 'C-2'}), (b2:BUILDING {name: 'C-1'})
-CREATE (b1)-[:ADJACENT_TO {floor: 1}]->(b2)
-WITH b2
-
-MATCH (b1:BUILDING {name: 'C-1'}), (b2:BUILDING {name: 'A-1'})
-CREATE (b1)-[:ADJACENT_TO {floor: 1}]->(b2)
-WITH b2
-
-MATCH (b1:BUILDING {name: 'A-1'}), (b2:BUILDING {name: 'A-0'})
-CREATE (b1)-[:ADJACENT_TO {floor: 1}]->(b2)
-```
-
-```Cypher
-MATCH (a:Building {name: 'S-1'}), (b:Building {name: 'S-2'})
-CREATE (a)-[:CONNECTED {floor: 0}]->(b)
+// Entrance connections
+CREATE (e1)-[:CONNECTED_TO]->(e2)
+CREATE (e2)-[:CONNECTED_TO]->(e3)
+CREATE (e3)-[:CONNECTED_TO]->(e4)
 ```
 Set 1 property, created 1 relationship, completed after 46 ms.
 
@@ -130,20 +185,14 @@ CREATE (e1)-[:CONNECTED]->(e2)
 ```
 Created 756 relationships, completed after 60 ms.
 
+---
+
 ### **Task 2: Analytics, run the following queries:** 
-**Task 2.1:** Are there any buildings that are not connected directly (not through an entrance) to other buildings?
-```Cypher
-MATCH (b:Building)
-WHERE NOT (b)-[:ADJACENT_TO]-(:Building)
-RETURN b.name
-```
-Started streaming 46 records after 9 ms and completed after 23 ms.
-Output --> 46 
+**Task 2.1:** Are there any buildings that are **not connected** directly (not through an entrance) to other buildings?
 
 ```Cypher
--- NEW 
 MATCH (b:Building)
-WHERE NOT (b)-[:ADJACENT_TO]-(:Building)
+WHERE NOT (b)-[:ADJACENT]->()
 RETURN b.name
 ```
 Output --> S-1"
@@ -158,35 +207,38 @@ Output --> S-1"
 
 **Task 2.2:** How many service facilities there are?
 ```Cypher
-MATCH (s:SERVICE)
-RETURN count(s) AS serviceFacilitiesCount
+MATCH (b:Building)-[:HAS_FUNCTION]->(f:Function {type: 'SERVICE'})
+RETURN count(b) AS service_facilities_count
 ```
 Started streaming 1 records after 8 ms and completed after 9 ms.
 Output --> 4
 
 **Task 2.3:** What buildings A-1 is connected with?
 ```Cypher
-MATCH (a1:Building {name: 'A-1'})-[:ADJACENT_TO]-(connectedBuilding)
-RETURN connectedBuilding.name AS connectedBuilding
+MATCH (a1:Building {name: 'A-1'})-[:ADJACENT]-(adj:Building)
+RETURN adj.name, collect(properties(a1)-[:ADJACENT]->(adj)) AS floors_connected
 ```
 Output --> Data Model
 **Task 2.4:** What buildings A-1 is connected with and at which floors?
 - Connected changed to ADJACENT_TO
 ```Cypher
-MATCH (a1:Building {name: 'A-1'})-[:ADJACENT_TO]-(connectedBuilding)
-RETURN connectedBuilding.name AS connectedBuilding, connectedBuilding.floor AS floor
+MATCH (start:Building {name: 'C-1'}), (end:Building {name: 'D-1'})
+CALL apoc.algo.allSimplePaths(start, end, 'ADJACENT', 100) YIELD path
+WITH path WHERE NONE(rel IN relationships(path) WHERE type(rel) = 'CONNECTED_TO')
+RETURN path
 ```
 
 **Task 2.5:** How to get from the Candidates Application Centre to the Faculty of Mechanical Engineering and Robotics without leaving the buildings (not going through an entrance)?
 ```Cypher
-MATCH path = (c:CLASSROOM {number: 'C1'})-[:LOCATED_IN|ADJACENT_TO*]-(f:TEACHING {name: 'Faculty of Mechanical Engineering and Robotics'})
-WHERE ALL(node IN nodes(path)[1..-1] WHERE node:TEACHING OR node:RESEARCH OR node:SERVICE)
-RETURN path
+MATCH (start:Building {name: 'C-3'}), (end:Entrance {name: 'Entrance1'})
+CALL apoc.algo.dijkstra(start, end, 'ADJACENT|CONNECTED_TO', 'floor', 1) YIELD path, weight
+RETURN path, weight
 
 ```
 **Task 2.6:** What is a shortest path (minimal number of buildings to go through) from the C-3 ground floor to the A-0 entrance?
 ```Cypher
-MATCH (start:Building {name: 'C-3', floor: 0})-[:ADJACENT_TO*]-(end:Building {name: 'A-0', floor: 1})
-MATCH path = shortestPath((start)-[:ADJACENT_TO*]-(end))
-RETURN path
+MATCH (b1:Building)-[:ADJACENT*1..2]-(b2:Building)
+WITH b1, count(DISTINCT b2) AS connected_buildings
+WHERE connected_buildings >= 3
+RETURN b1.name
 ```
