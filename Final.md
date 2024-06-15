@@ -1,4 +1,4 @@
-### There is a graph representing information about **furniture** in a **Neo4J** database that has:
+### 1. There is a graph representing information about **furniture** in a **Neo4J** database that has:
 - 2 nodes labeled LEG that are connected with edges **(labelled ATTACHED)** with 1 node labeled **TABLETOP**.
 - Write a Cypher language query that **matches the above** and **removes an edge** between the **TABLETOP** and the **first LEG**.
 ### **Solution**
@@ -10,7 +10,7 @@ LIMIT 1
 DELETE r
 ```
 ---
-### There is a graph representing information about **furniture** in a **Neo4J** database that has:
+### 2. There is a graph representing information about **furniture** in a **Neo4J** database that has:
 - 2 nodes labeled LEG that are connected with edges **(labelled ATTACHED)** with 1 node labeled **TABLETOP**.
 - Write a Cypher language query that matches the **above adds** attribute **"color"** to each of the nodes **labelled with LEG** with a value of **"white"** for the first node, **"red"** for the second.
 ### **Solution**
@@ -22,7 +22,7 @@ SET (legs[0]).color = "white",  (legs[1]).color = "red"  -- sets "color" attribu
 ```
 
 ---
-### There is a graph representing information about **furniture** in a **Neo4J** database that has:
+### 3. There is a graph representing information about **furniture** in a **Neo4J** database that has:
 - 2 nodes labeled LEG that are connected with edges **(labelled ATTACHED)** with 1 node labeled **TABLETOP**.,
 - Write a Cypher language query that matches the **above** and for each of **nodes called LEG** adds an **edge labelled EXTRA** and a node labelled **PAD** connected with it.
 ### **Solution**
@@ -33,7 +33,7 @@ CREATE (pad:PAD)
 CREATE (leg:LEG)-[:EXTRA]->(pad)
 ```
 ---
-### Star datawarehouse for a telecommunication company that provides secure data connections between their customers.
+### 4. Star datawarehouse for a telecommunication company that provides secure data connections between their customers.
 - A single fact regards a connection contract from one customer to another with its **price**, and **duration**, hence there are the following dimensions: from (city name, zip code), to (city name, zip code), time (time and date).
 - Write an SQL query that **creates** the above **warehouse schema** in a **relational database**, including **attributes**, **datatypes** and **keys**.
 - Write an SQL query that calculates a **sum of prices** for **each month in 2020** for 30-059 zip code (for the outgoing connection).
@@ -83,7 +83,7 @@ connection_date;
 
 ---
 
-### A PostgreSQL database table has been created usıng the following code: 
+### 5. A PostgreSQL database table has been created usıng the following code: 
 ```SQL 
 CREATE TABLE cities (ide serial, name character varying(30));
 ```
@@ -105,7 +105,7 @@ SELECT * FROM cities WHERE name ILIKE "Lond%"
 ---
 
 
-### A PostgreSQL database table has been created usıng the followıng code: 
+### 6. A PostgreSQL database table has been created usıng the followıng code: 
 ```SQL 
 CREATE TABLE cities (ide serial, name character varying(30));
 ```
@@ -116,22 +116,31 @@ SET enable_seqscan TO off;
 ```
 - However after running "EXPLAIN" with following query:
 ```SQL 
-SELECT * FROM cities WHERE name LIKE "%burg"
+SELECT * FROM cities WHERE name LIKE '%burg';
 ```
 - It turned out that the index is not used - the database performs a sequential scan instead.
 - Try to identify the problem. Explain why it occured.
 - Try to fix the problem and obtain a scenerio where an index scan is performed, without changing the data structure of the table or the purpose of the query itself.
 
 ### **Solution**
-- The index **cities_name_idx** is npt used for **SELECT * FROM cities WHERE name LIKE "%burg"** because PostgreSQL cannot efficiently use indexes with a wildcard (%) at the beginning of a **LIKE** pattern due to how B-tree indexes are structured.
-- To ensure index usage, modify query to
+- The problem that the index not being used is because the query uses a wildcard at the beginning of the pattern in the LIKE clause.
+- PostgreSQL cannot use an index for patterns starting with a wildcard.
+- To fix this issue, we can use the `pg_trgm` extension to create a trigram index, which can be used for wildcard searches :
+
 ```SQL 
-  SELECT * FROM cities WHERE name LIKE "burg%"
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE INDEX cities_name_trgm_idx ON cities USING gin(name gin_trgm_ops);
 ```
+
+- After running the **EXPLAIN** command, we should see the index is being used :
+
+```SQL 
+EXPLAIN SELECT * FROM cities WHERE name LIKE '%burg';
+```
+
 ---
 
-
-### The following PostgreSQL/PostGIS table was created:
+### 7. The following PostgreSQL/PostGIS table was created:
 ```SQL 
 CREATE TABLE cities (
   id serial PRIMARY KEY,
@@ -155,3 +164,19 @@ SELECT
 ```
 - However, it turned out that the result is nowhere near the expected value of 250km
 - Fix the query without using reprojection to other reference systems and keeping ST_Distance function, so that the result is lose to the expected one.
+### **Solution**
+To fix the distance calculation query, we will need to transform the geometries to a different spatial reference system that uses meters as
+the unit of measurement.
+We can use the 'ST_Transform' function to achieve this:
+
+```SQL 
+SELECT
+ST_Distance(
+ST_Transform((SELECT location FRO
+M cities WHERE name = 'Krakow'), 3857),
+ST_Transform((SELECT location FRO
+M cities WHERE name = 'Warsaw'), 3857)
+) / 1000 AS distance_km;
+```
+
+- This query will give a result close to the expected distance of approximately 250 km.
