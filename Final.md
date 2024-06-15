@@ -196,7 +196,9 @@ M cities WHERE name = 'Warsaw'), 3857)
 <img width="585" alt="Ekran Resmi 2024-06-16 01 13 01" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/36f26d34-1481-416d-bdeb-ef15fcfdecf1">
 <img width="850" alt="Ekran Resmi 2024-06-16 01 14 43" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/1fac5acf-ac74-4229-abff-98a76780f103
 ---
+  
 <img width="627" alt="Ekran Resmi 2024-06-16 01 15 01" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/da6ff3b6-6644-4335-9936-434862bc32e4">
+
 ---
 <img width="887" alt="Ekran Resmi 2024-06-16 01 17 53" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/a58bd531-320a-4481-9464-e8b010267597">
 
