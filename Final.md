@@ -8,7 +8,21 @@
 { "who":"Mark Brown", "class":"compilers", "grade":3.0 }
 1. Write a view (provide appropriate functions) that counts how many valid grades there are on each day. Mind, that a valid grade has a person assigned (who, grade, date attributes must be present).
 2. Using the above view, what is an URL that shows the count for "2023-11-10"?
-- 2:
+
+---
+
+- 2: There are cars represented in a Neo4J database. Each car is a node labelled CAR with edges connecting to 4 nodes representing wheels labelled WHEEL and 1 node representing an engine labelled ENGINE.
+A node labelled CAR has properties "name" and "year".
+A node labelled WHEEL has a property "diameter".
+A node labelled ENGINE has a property "size".
+
+Write the following Cypher queries.
+1. Create all necessary nodes and edges for a car which name is Ford and year is 2023, with wheel diameter being 16 and engine size being 2.
+2. Change the wheel size of all cars that name is Ferrari to 20. Mind that a car is represented by a set of nodes and edges as stated above.
+3. Remove all nodes labelled ENGINE.
+
+--- 
+
 - 3:
 - 4:
 
