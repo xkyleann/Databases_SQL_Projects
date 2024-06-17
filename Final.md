@@ -242,10 +242,32 @@ MATCH (grandfather:Person)-[:FATHER]->(parent:Person)-[:FATHER|MOTHER]->(grandch
 RETURN DISTINCT grandfather.name AS Grandfather
 ```
 ---
+
+
+### 9. Correct all mistakes in the following datawarehouse star schema by rewriting the DDL queries.
+- Assume that there should be 2 dimensions.
+- Correct all mistakes in the following datawarehouse star schema by rewriting the DDL queries.
+
+```SQL 
+CREATE TABLE fact (
+idfact integer PRIMARY KEY,
+employee_id integer REFERENCES employee,
+amount numeric(10,2),
+);
+CREATE TABLE employee (
+employee_id varchar(30),
+name varchar(30) PRIMARY KEY,
+);
+```
+- Write an SQL query that delivers a total amount for each month of each year.
+---
+# QUESTIONS
+
 ## All Possible Questions with Answers 
 <img width="623" alt="Ekran Resmi 2024-06-16 01 12 23" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/29e9c6cd-7f7e-4683-8691-f29b9a19b278">
 ---
-<img width="831" alt="Ekran Resmi 2024-06-16 01 16 15" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/78a67b87-3cbd-4a9e-97c0-82af614e0c1e">
+<img width="8
+  31" alt="Ekran Resmi 2024-06-16 01 16 15" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/78a67b87-3cbd-4a9e-97c0-82af614e0c1e">
 ---
 
 <img width="606" alt="Ekran Resmi 2024-06-16 01 16 53" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/1e20d059-a397-431f-adfe-fa7e99853846">
