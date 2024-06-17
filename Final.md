@@ -182,6 +182,66 @@ M cities WHERE name = 'Warsaw'), 3857)
 - This query will give a result close to the expected distance of approximately 250 km.
 
 ---
+
+### 8. The following PostgreSQL/PostGIS table was created:
+- Write down a Cypher query (or queries) that create a family tree consisting of at least 3 generations.
+- You must include information who is a boy, girl, father, mother.
+- Consider at least 3 families with children.
+- Write down a Cypher query that finds grandfathers.
+- Write down a Cypher query that finds grandfathers.
+```SQL
+// Create nodes for the first family
+CREATE (john:Person {name: 'John', gender: 'male'})
+CREATE (mary:Person {name: 'Mary', gender: 'female'})
+CREATE (paul:Person {name: 'Paul', gender: 'male'})
+CREATE (susan:Person {name: 'Susan', gender: 'female'})
+CREATE (david:Person {name: 'David', gender: 'male'})
+CREATE (lisa:Person {name: 'Lisa', gender: 'female'})
+
+// Create relationships for the first family
+CREATE (john)-[:FATHER]->(paul)
+CREATE (john)-[:FATHER]->(susan)
+CREATE (mary)-[:MOTHER]->(paul)
+CREATE (mary)-[:MOTHER]->(susan)
+CREATE (paul)-[:FATHER]->(david)
+CREATE (paul)-[:FATHER]->(lisa)
+
+// Create nodes for the second family
+CREATE (michael:Person {name: 'Michael', gender: 'male'})
+CREATE (sarah:Person {name: 'Sarah', gender: 'female'})
+CREATE (kevin:Person {name: 'Kevin', gender: 'male'})
+CREATE (amy:Person {name: 'Amy', gender: 'female'})
+CREATE (robert:Person {name: 'Robert', gender: 'male'})
+CREATE (emily:Person {name: 'Emily', gender: 'female'})
+
+// Create relationships for the second family
+CREATE (michael)-[:FATHER]->(kevin)
+CREATE (michael)-[:FATHER]->(amy)
+CREATE (sarah)-[:MOTHER]->(kevin)
+CREATE (sarah)-[:MOTHER]->(amy)
+CREATE (kevin)-[:FATHER]->(robert)
+CREATE (kevin)-[:FATHER]->(emily)
+
+// Create nodes for the third family
+CREATE (william:Person {name: 'William', gender: 'male'})
+CREATE (jessica:Person {name: 'Jessica', gender: 'female'})
+CREATE (chris:Person {name: 'Chris', gender: 'male'})
+CREATE (emma:Person {name: 'Emma', gender: 'female'})
+CREATE (mark:Person {name: 'Mark', gender: 'male'})
+CREATE (sophie:Person {name: 'Sophie', gender: 'female'})
+
+// Create relationships for the third family
+CREATE (william)-[:FATHER]->(chris)
+CREATE (william)-[:FATHER]->(emma)
+CREATE (jessica)-[:MOTHER]->(chris)
+CREATE (jessica)-[:MOTHER]->(emma)
+CREATE (chris)-[:FATHER]->(mark)
+CREATE (chris)-[:FATHER]->(sophie)
+
+MATCH (grandfather:Person)-[:FATHER]->(parent:Person)-[:FATHER|MOTHER]->(grandchild:Person)
+RETURN DISTINCT grandfather.name AS Grandfather
+```
+---
 ## All Possible Questions with Answers 
 <img width="623" alt="Ekran Resmi 2024-06-16 01 12 23" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/29e9c6cd-7f7e-4683-8691-f29b9a19b278">
 ---
