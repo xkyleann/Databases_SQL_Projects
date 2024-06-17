@@ -1,5 +1,13 @@
 
-- 1:
+- 1: There are the following documents representing grades in a CouchDB database:
+
+{ "who":"John Doe", "class":"databases2", "date":"2023-10-11", "grade":4.5 }
+{ "who":"Jane Doe", "class":"programing", "date":"2023-11-10", "grade":3.5 }
+{ "who":"John Doe", "class":"programing", "date":"2023-11-18", "grade":4.0 }
+{ "who":"Mark Brown", "class":"databases2", "date":"2023-11-10", "grade":5.0 }
+{ "who":"Mark Brown", "class":"compilers", "grade":3.0 }
+1. Write a view (provide appropriate functions) that counts how many valid grades there are on each day. Mind, that a valid grade has a person assigned (who, grade, date attributes must be present).
+2. Using the above view, what is an URL that shows the count for "2023-11-10"?
 - 2:
 - 3:
 - 4:
