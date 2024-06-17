@@ -8,7 +8,7 @@
 { "who":"Mark Brown", "class":"compilers", "grade":3.0 }
 1. Write a view (provide appropriate functions) that counts how many valid grades there are on each day. Mind, that a valid grade has a person assigned (who, grade, date attributes must be present).
 2. Using the above view, what is an URL that shows the count for "2023-11-10"?
-ANSW:
+ANSWER : 
 Here is the JSON for the design document with the map-reduce view:
 {
   "_id": "_design/grades",
@@ -88,6 +88,81 @@ Write the following Cypher queries.
 2. Change the wheel size of all cars that name is Ferrari to 20. Mind that a car is represented by a set of nodes and edges as stated above.
 3. Remove all nodes labelled ENGINE.
 
+ANSWER: 
+Here are the Cypher queries to perform the tasks described in your Neo4j database:
+
+### 1. Create all necessary nodes and edges for a car named Ford and year 2023, with wheel diameter being 16 and engine size being 2.
+
+```cypher
+CREATE (c:CAR {name: 'Ford', year: 2023})
+CREATE (e:ENGINE {size: 2})
+CREATE (w1:WHEEL {diameter: 16}),
+       (w2:WHEEL {diameter: 16}),
+       (w3:WHEEL {diameter: 16}),
+       (w4:WHEEL {diameter: 16})
+CREATE (c)-[:HAS_ENGINE]->(e)
+CREATE (c)-[:HAS_WHEEL]->(w1),
+       (c)-[:HAS_WHEEL]->(w2),
+       (c)-[:HAS_WHEEL]->(w3),
+       (c)-[:HAS_WHEEL]->(w4);
+```
+
+**Explanation:**
+- **CAR Node:** A `CAR` node is created with properties `name` and `year`.
+- **ENGINE Node:** An `ENGINE` node is created with the property `size`.
+- **WHEEL Nodes:** Four `WHEEL` nodes are created, each with the property `diameter`.
+- **Relationships:** Relationships are created between the `CAR` node and the `ENGINE` node, and between the `CAR` node and each `WHEEL` node.
+
+### 2. Change the wheel size of all cars named Ferrari to 20.
+
+```cypher
+MATCH (c:CAR {name: 'Ferrari'})-[:HAS_WHEEL]->(w:WHEEL)
+SET w.diameter = 20;
+```
+
+**Explanation:**
+- **Match:** The query matches `CAR` nodes with the name `Ferrari` and their related `WHEEL` nodes.
+- **Set:** The diameter of all related `WHEEL` nodes is updated to 20.
+
+### 3. Remove all nodes labelled ENGINE.
+
+```cypher
+MATCH (e:ENGINE)
+DETACH DELETE e;
+```
+
+**Explanation:**
+- **Match:** This matches all nodes labelled `ENGINE`.
+- **Detach Delete:** This deletes the `ENGINE` nodes and automatically removes any relationships they are involved in.
+
+### Full Example
+
+Here's a full example with these queries combined, assuming the database is initially empty:
+
+```cypher
+// 1. Create a car named Ford
+CREATE (c:CAR {name: 'Ford', year: 2023})
+CREATE (e:ENGINE {size: 2})
+CREATE (w1:WHEEL {diameter: 16}),
+       (w2:WHEEL {diameter: 16}),
+       (w3:WHEEL {diameter: 16}),
+       (w4:WHEEL {diameter: 16})
+CREATE (c)-[:HAS_ENGINE]->(e)
+CREATE (c)-[:HAS_WHEEL]->(w1),
+       (c)-[:HAS_WHEEL]->(w2),
+       (c)-[:HAS_WHEEL]->(w3),
+       (c)-[:HAS_WHEEL]->(w4);
+
+// 2. Change wheel size of all Ferraris
+MATCH (c:CAR {name: 'Ferrari'})-[:HAS_WHEEL]->(w:WHEEL)
+SET w.diameter = 20;
+
+// 3. Remove all ENGINE nodes
+MATCH (e:ENGINE)
+DETACH DELETE e;
+```
+
+This approach maintains clarity and avoids errors by performing each task step by step. Adjust the names and properties as needed to fit your specific database schema and requirements.
 --- 
 
 - 3:
