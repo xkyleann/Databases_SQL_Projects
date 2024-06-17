@@ -8,7 +8,74 @@
 { "who":"Mark Brown", "class":"compilers", "grade":3.0 }
 1. Write a view (provide appropriate functions) that counts how many valid grades there are on each day. Mind, that a valid grade has a person assigned (who, grade, date attributes must be present).
 2. Using the above view, what is an URL that shows the count for "2023-11-10"?
+ANSW:
+Here is the JSON for the design document with the map-reduce view:
+{
+  "_id": "_design/grades",
+  "views": {
+    "valid_grades_per_date": {
+      "map": "function(doc) { if (doc.who && doc.grade && doc.date) { emit(doc.date, 1); } }",
+      "reduce": "_count"
+    }
+  }
+}
 
+Explanation:
+
+Map Function: The map function checks if the document contains who, grade, and date. If all these fields are present, it emits the date as the key and 1 as the value.
+Reduce Function: The reduce function uses the built-in _count to count the occurrences of each key (date).
+Using the View
+Once the design document is saved to your CouchDB database, you can use the following URL to query the view for the count of valid grades on a specific date, such as 2023-11-10.
+
+The URL structure for querying this view would be:
+http://<couchdb-host>:<port>/<database>/_design/grades/_view/valid_grades_per_date?key="2023-11-10"
+
+Replace <couchdb-host>, <port>, and <database> with the actual CouchDB host, port, and database name.
+
+Example for Localhost
+If your CouchDB instance is running locally on the default port and your database is named school, the URL would be:
+http://localhost:5984/school/_design/grades/_view/valid_grades_per_date?key="2023-11-10"
+
+Steps to Create the View:
+Create the Design Document: Save the design document to your CouchDB database. You can do this using CouchDB's Fauxton interface or via a curl command.
+
+Using curl:
+curl -X PUT http://localhost:5984/school/_design/grades -d '{
+  "views": {
+    "valid_grades_per_date": {
+      "map": "function(doc) { if (doc.who && doc.grade && doc.date) { emit(doc.date, 1); } }",
+      "reduce": "_count"
+    }
+  }
+}'
+
+Query the View: Use the URL provided to query the view and get the count of valid grades for the specified date.
+
+Testing the View
+Here are the sample documents and their valid status:
+{ "who": "John Doe", "class": "databases2", "date": "2023-10-11", "grade": 4.5 }   // Valid
+{ "who": "Jane Doe", "class": "programing", "date": "2023-11-10", "grade": 3.5 }   // Valid
+{ "who": "John Doe", "class": "programing", "date": "2023-11-18", "grade": 4.0 }   // Valid
+{ "who": "Mark Brown", "class": "databases2", "date": "2023-11-10", "grade": 5.0 } // Valid
+{ "who": "Mark Brown", "class": "compilers", "grade": 3.0 }                        // Invalid (missing date)
+
+For the date 2023-11-10, there are two valid grades, so the result of the query should be 2.
+
+Expected URL Response
+Using the view, the URL:
+http://localhost:5984/school/_design/grades/_view/valid_grades_per_date?key="2023-11-10"
+
+will return something like:
+{
+  "rows": [
+    {
+      "key": "2023-11-10",
+      "value": 2
+    }
+  ]
+}
+
+This setup will allow you to effectively count valid grades for each day in your CouchDB database.
 ---
 
 - 2: There are cars represented in a Neo4J database. Each car is a node labelled CAR with edges connecting to 4 nodes representing wheels labelled WHEEL and 1 node representing an engine labelled ENGINE.
