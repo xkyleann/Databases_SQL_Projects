@@ -1,3 +1,5 @@
+# QA
+
 ### 1. There is a graph representing information about **furniture** in a **Neo4J** database that has:
 - 2 nodes labeled LEG that are connected with edges **(labelled ATTACHED)** with 1 node labeled **TABLETOP**.
 - Write a Cypher language query that **matches the above** and **removes an edge** between the **TABLETOP** and the **first LEG**.
@@ -261,7 +263,7 @@ name varchar(30) PRIMARY KEY,
 ```
 - Write an SQL query that delivers a total amount for each month of each year.
 ---
-# QUESTIONS
+
 
 ## All Possible Questions with Answers 
 <img width="623" alt="Ekran Resmi 2024-06-16 01 12 23" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/29e9c6cd-7f7e-4683-8691-f29b9a19b278">
