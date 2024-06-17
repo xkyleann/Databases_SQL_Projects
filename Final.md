@@ -1,4 +1,10 @@
 # QA
+1
+2
+3
+4
+
+---
 
 ### 1. There is a graph representing information about **furniture** in a **Neo4J** database that has:
 - 2 nodes labeled LEG that are connected with edges **(labelled ATTACHED)** with 1 node labeled **TABLETOP**.
