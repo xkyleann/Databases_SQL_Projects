@@ -1,94 +1,3 @@
-
-- 1: There are the following documents representing grades in a CouchDB database:
-
-{ "who":"John Doe", "class":"databases2", "date":"2023-10-11", "grade":4.5 }
-{ "who":"Jane Doe", "class":"programing", "date":"2023-11-10", "grade":3.5 }
-{ "who":"John Doe", "class":"programing", "date":"2023-11-18", "grade":4.0 }
-{ "who":"Mark Brown", "class":"databases2", "date":"2023-11-10", "grade":5.0 }
-{ "who":"Mark Brown", "class":"compilers", "grade":3.0 }
-1. Write a view (provide appropriate functions) that counts how many valid grades there are on each day. Mind, that a valid grade has a person assigned (who, grade, date attributes must be present).
-2. Using the above view, what is an URL that shows the count for "2023-11-10"?
-
-**ANSWER** : 
-To create a view in CouchDB that counts valid grades for each date, you need to define a map-reduce function. The map function will emit only valid grades (i.e., documents containing `who`, `grade`, and `date`). The reduce function will count these valid grades.
-
-Here's how to define such a view:
-
-### Design Document and View Definition
-
-```json
-{
-  "_id": "_design/grades",
-  "views": {
-    "valid_grades_per_date": {
-      "map": "function(doc) { if (doc.who && doc.grade && doc.date) { emit(doc.date, 1); } }",
-      "reduce": "_count"
-    }
-  }
-}
-```
-
-**Explanation:**
-- **Map Function:** Checks if `who`, `grade`, and `date` fields are present in the document. If they are, it emits the `date` as the key and `1` as the value.
-- **Reduce Function:** Uses the built-in `_count` to count the number of times each date appears.
-
-### Using the View
-
-Once the design document is saved in the CouchDB, you can query the view to get the count of valid grades for a specific date.
-
-For example, to get the count for `2023-11-10`, the URL would be:
-
-```
-http://<couchdb-host>:<port>/<database>/_design/grades/_view/valid_grades_per_date?key="2023-11-10"
-```
-
-Replace `<couchdb-host>`, `<port>`, and `<database>` with your CouchDB host, port, and database name respectively.
-
-### Example with Localhost
-
-If your CouchDB is running locally on the default port and your database is named `school`, the URL would be:
-
-```
-http://localhost:5984/school/_design/grades/_view/valid_grades_per_date?key="2023-11-10"
-```
-
-### Steps to Create the View:
-
-1. **Create Design Document:** Add the design document to your CouchDB database. You can do this via the CouchDB Fauxton interface or using a `curl` command.
-   
-   **Using `curl`:**
-   ```sh
-   curl -X PUT http://localhost:5984/school/_design/grades -d '{
-     "views": {
-       "valid_grades_per_date": {
-         "map": "function(doc) { if (doc.who && doc.grade && doc.date) { emit(doc.date, 1); } }",
-         "reduce": "_count"
-       }
-     }
-   }'
-   ```
-
-2. **Query the View:** Use the URL provided to query the view for a specific date.
-
-This setup will allow you to count valid grades per date efficiently in CouchDB.
-
-
-
----
-
-- 2: There are cars represented in a Neo4J database. Each car is a node labelled CAR with edges connecting to 4 nodes representing wheels labelled WHEEL and 1 node representing an engine labelled ENGINE.
-A node labelled CAR has properties "name" and "year".
-A node labelled WHEEL has a property "diameter".
-A node labelled ENGINE has a property "size".
-
-Write the following Cypher queries.
-1. Create all necessary nodes and edges for a car which name is Ford and year is 2023, with wheel diameter being 16 and engine size being 2.
-2. Change the wheel size of all cars that name is Ferrari to 20. Mind that a car is represented by a set of nodes and edges as stated above.
-3. Remove all nodes labelled ENGINE.
-
-ANSWER: 
-Here are the Cypher queries to perform the tasks described in your Neo4j database:
-
 ### 1. Create all necessary nodes and edges for a car named Ford and year 2023, with wheel diameter being 16 and engine size being 2.
 
 ```cypher
@@ -454,5 +363,24 @@ name varchar(30) PRIMARY KEY,
 ---
 <img width="887" alt="Ekran Resmi 2024-06-16 01 17 53" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/a58bd531-320a-4481-9464-e8b010267597">
 
+--- 
+### Final 
+
+<img width="599" alt="Screenshot 2024-06-20 at 10 32 29" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/3a1c0431-6914-4061-a4f3-f75156054311">
+
+---
+<img width="582" alt="Screenshot 2024-06-20 at 10 32 47" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/822e437f-c186-48e5-bc2e-47fe710e5318">
+
+<img width="847" alt="points1-1" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/b83bf238-b2af-441d-a0b1-ab719ca2b958">
+
+<img width="844" alt="points2" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/a4742838-5441-4494-85e7-cd52df0ad4c3">
+
+---
+<img width="591" alt="Screenshot 2024-06-20 at 10 33 26" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/3b1502c9-e3d3-4a46-8df7-baac07da3204">
+
+---
+<img width="596" alt="Screenshot 2024-06-20 at 10 33 46" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/7d962cd0-24c5-4f2d-847b-e69216a0a6b7">
+
+<img width="617" alt="Screenshot 2024-06-20 at 10 33 53" src="https://github.com/xkyleann/Databases_SQL_Projects/assets/128597547/9bafc1c5-868f-479c-b0c6-d4b1e3cf3a0b">
 
 
