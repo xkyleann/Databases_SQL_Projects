@@ -1,4 +1,4 @@
-// Exercise 4.3 - Lab3 - Edibe Tutku Gayda
+// Exercise 4.3 - Lab3 
 // gcc exercise2.c -o exercise2
 // ./exercise2
 
