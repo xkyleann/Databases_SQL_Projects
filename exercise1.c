@@ -1,4 +1,4 @@
-// Exercise 4.1 - Lab3 - Edibe Tutku Gayda
+// Exercise 4.1
 // Write a C program that dynamically allocates memory for a data structure containing: id(integer), name(string, 20), and descriptin (string,90)
 // gcc exercise1.c -o exercise1 
 // ./exercise1
